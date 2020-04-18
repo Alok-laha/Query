@@ -12,8 +12,9 @@ var app=express();
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
+var url= process.env.DATABASEURL;
 //mongoose.connect("mongodb://localhost/clg_project",{ useNewUrlParser: true });
-mongoose.connect("mongodb+srv://Alok-laha:alok98@2404@query-sf4gd.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser:true});
+mongoose.connect(url, {useNewUrlParser:true});
 app.use(flash());
 
 app.use(require("express-session")({
@@ -67,9 +68,10 @@ app.use(function(req,res,next){
     next();
 });
 
- app.listen(3000,function(){
- 	console.log("college_server has started");
- });
+const PORT = process.env.PORT;
+app.listen(PORT,function(req,res){
+    console.log("query server has started");
+});
 app.get("/",function(req,res){
    res.render("landing"); 
 });
