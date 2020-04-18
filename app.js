@@ -12,7 +12,8 @@ var app=express();
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
-mongoose.connect("mongodb://localhost/clg_project",{ useNewUrlParser: true });
+//mongoose.connect("mongodb://localhost/clg_project",{ useNewUrlParser: true });
+mongoose.connect("mongodb+srv://Alok-laha:alok98@2404@query-sf4gd.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser:true});
 app.use(flash());
 
 app.use(require("express-session")({
