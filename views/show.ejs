@@ -1,0 +1,24 @@
+<%-include("header")%>
+<div class="container">
+          <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+  
+        <% allques.forEach(function(item){ %>
+    <div class="col-md-3 col-sm-6">
+        <div class="img-thumbnail" id="showed">
+        <p style="width:100%;" class="showed"><%= item.questions %></p><br>
+           <div class="caption" style="texe-align:center;">
+        <% if(currentUser.username==="Alok"){ %>
+        <a class="btn btn-primary" href="/home/allquestions/<%=item._id%>/edit">Edit Answer</a>
+        <% }%>
+        </div><br>
+         <div class="caption">
+        <a class="btn btn-primary" href="/home/allquestions/<%=item._id%>/answer">View Answer</a>
+        </div>
+        </div>
+        </div>
+        <% }) %>
+        </div>
+</div>
+
+
+<%-include("footer")%>
