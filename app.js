@@ -12,18 +12,10 @@ var app=express();
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
-var url= process.env.DATABASEURL;
 //mongoose.connect("mongodb://localhost/clg_project",{ useNewUrlParser: true });
-//mongoose.connect(url, {useNewUrlParser:true});
+//mongodb+srv://Alok:alok24@query-bunes.mongodb.net/test?retryWrites=true&w=majority
+mongoose.connect(process.env.DBURL, {useNewUrlParser:true, useUnifiedTopology: true});
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://Alok-laha:alok98@2404@query-sf4gd.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
 
 app.use(flash());
 
